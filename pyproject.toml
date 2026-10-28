@@ -1,0 +1,58 @@
+[project]
+name = "coursovaya-1"
+version = "0.1.0"
+description = "Приложение для анализа банковских транзакций"
+authors = [
+    {name = "Oksana Tishina", email = "oxtishina@gmail.com"}
+]
+requires-python = "^3.12"
+dependencies = [
+    "pandas (>=3.1.0,<4.0.0)",
+    "requests (>=2.34.2,<3.0.0)",
+    "python-dotenv (>=1.2.4,<2.0.0)",
+    "xlrd (>=2.0.2,<3.0.0)",
+    "openpyxl (>=3.1.5,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.2.0,<10.0.0)",
+    "pytest-cov (>=7.1.0,<8.0.0)",
+    "flake8 (>=7.4.1,<8.0.0)",
+    "mypy (>=2.4.0,<3.0.0)",
+    "isort (>=9.0.2,<10.0.0)",
+    "black (>=26.10.1,<27.0.0)",
+    "xlwt (>=1.3.0,<2.0.0)",
+    "pandas-stubs (>=3.0.5.260914,<4.0.0.0)",
+    "types-xlrd (>=2.0.0.20260518,<3.0.0.0)"
+]
+
+
+[tool.isort]
+profile = "black"
+skip = [".venv", ".git", "__pycache__", ".pytest_cache", ".mypy_cache"]
+line_length = 119
+
+
+[tool.black]
+line-length = 119
+target-version = ["py312"]
+
+
+[tool.mypy]
+python_version = "3.12"
+check_untyped_defs = true
+disallow_untyped_defs = true
+warn_return_any = true
+warn_unused_ignores = true
+
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["src/main.py"]
